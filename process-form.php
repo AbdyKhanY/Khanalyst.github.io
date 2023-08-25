@@ -15,12 +15,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mail->Port = 587;
     $mail->SMTPSecure = 'tls';
     $mail->SMTPAuth = true;
-    $mail->Username = 'abdykhan.edu@gmail.com'; // Replace with your Gmail email
-    $mail->Password = 'kaaraan4'; // Replace with your Gmail password
+    $mail->Username = 'abdyk@gmail.com'; // Replace with your Gmail email
+    $mail->Password = 'kaa'; // Replace with your Gmail password
 
     // Sender and recipient
     $mail->setFrom($email, $name);
-    $mail->addAddress('abdykhan.edu@gmail.com'); // Replace with your desired recipient email
+    $mail->addAddress('abdykhu@gmail.com'); // Replace with your desired recipient email
     
     // Email subject and body
     $mail->Subject = "New Contact Form Submission from $name";
