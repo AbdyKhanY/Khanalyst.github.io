@@ -1,38 +1,20 @@
 <?php
-require 'PHPMailer/PHPMailerAutoload.php';
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST["name"];
     $email = $_POST["email"];
     $message = $_POST["message"];
     
-    // Create a new PHPMailer instance
-    $mail = new PHPMailer;
-    
-    // SMTP configuration for Gmail
-    $mail->isSMTP();
-    $mail->Host = 'smtp.gmail.com';
-    $mail->Port = 587;
-    $mail->SMTPSecure = 'tls';
-    $mail->SMTPAuth = true;
-    $mail->Username = 'abdyk@gmail.com'; // Replace with your Gmail email
-    $mail->Password = 'kaa'; // Replace with your Gmail password
-
-    // Sender and recipient
-    $mail->setFrom($email, $name);
-    $mail->addAddress('abdykhu@gmail.com'); // Replace with your desired recipient email
-    
-    // Email subject and body
-    $mail->Subject = "New Contact Form Submission from $name";
-    $mail->Body = $message;
+    $to = "abdykhan.edu@gmail.com"; // Replace with your email address
+    $subject = "New Contact Form Submission from $name";
+    $headers = "From: $email\r\n";
     
     // Send the email
-    if ($mail->send()) {
+    if (mail($to, $subject, $message, $headers)) {
         echo "Email sent successfully!";
     } else {
-        echo "Email sending failed: " . $mail->ErrorInfo;
+        echo "Email sending failed.";
     }
 } else {
-    echo "Invalid request";
+    echo "Invalid request.";
 }
 ?>
